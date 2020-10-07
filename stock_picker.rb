@@ -8,11 +8,11 @@ end
 
 def get_profits(stock_prices)
   profits = Hash.new
-  stock_prices.each_with_index do |price, day|
-    stock_prices.each_with_index do |intraPrice, intraDay|
-      difference = (intraPrice - price)
-      if difference > 0 && intraDay > day then
-        profits[difference] = day, intraDay
+  stock_prices.each_with_index do |buy_price, buy_day|
+    stock_prices.each_with_index do |sell_price, sell_day|
+      difference = (sell_price - buy_price)
+      if difference > 0 && sell_day > buy_day then
+        profits[difference] = buy_day, sell_day
       end
     end
   end
